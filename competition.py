@@ -3,11 +3,12 @@ import random
 import requests
 import json
 
-st.set_page_config(page_title="Secret Santa", page_icon="🎅", layout="centered")
-st.title("🎅 Secret Santa")
+st.set_page_config(page_title="secret santa", page_icon="🎅", layout="centered")
+st.title("🎅 secret santa")
+st.text("please Select your name **ONLY** <3")
 
 names = [
-    "ADVAITH SANTHOSH", "AISHWARYA SREESH", "AKHILESH PRAMOD", "ANNE MARIA ELDO",
+    "AARON SAM","ADVAITH SANTHOSH", "AISHWARYA SREESH", "AKHILESH PRAMOD", "ANNE MARIA ELDO",
     "ARCHANA K A", "CILEN GEORGE ANIL", "GAYATHRI S", "HAMDHA FATHIMA SHANAVAS",
     "JONATHAN GIBOY PANICKER", "MATHEW GEORGE", "MOHAMMED RIZWAN K S",
     "NEVIL JOE JOY", "SREEDEV K P", "SANIYA SAM", "ABHINAV J CHEMMANNOOR",
@@ -51,14 +52,8 @@ def save_data(data: dict):
     r = requests.put(url, headers=headers, data=json.dumps(data))
     if r.status_code not in (200, 201):
         st.error("Error saving data to JSONBin")
-
-# ---------------------------------
-# Load or initialize assignments & revealed info
-# ---------------------------------
 data = load_data()
-
 if "assignments" not in data or "revealed" not in data:
-    # first-time initialization
     receivers = names.copy()
     while True:
         random.shuffle(receivers)
@@ -69,15 +64,10 @@ if "assignments" not in data or "revealed" not in data:
         "revealed": []
     }
     save_data(data)
-
 assignments = data["assignments"]
 revealed = set(data.get("revealed", []))
+st.success(f"Total Participants: **{len(names)-len(revealed)}** 🎄🎁")
 
-st.success(f"Total Participants: **{len(names)}** 🎄🎁")
-
-# ---------------------------------
-# Remaining names
-# ---------------------------------
 remaining_names = [n for n in names if n not in revealed]
 
 st.subheader("Select Your Name")
@@ -93,7 +83,6 @@ if st.button("Reveal 🎅"):
     if assigned:
         st.success(f"Your Secret Santa is: **{assigned}** 🎉🎁")
         st.balloons()
-        # Mark as revealed
         revealed.add(selected_name)
         data["revealed"] = list(revealed)
         save_data(data)
