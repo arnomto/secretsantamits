@@ -29,7 +29,9 @@ names = [
     "SAMUEL BABY", "SREYA SUSAN SAJU"
 ]
 
-
+API_BASE = "https://api.jsonbin.io/v3/b"
+BIN_ID = "6937150c43b1c97be9e03502"
+MASTER_KEY = "$2a$10$Wq4M8p2e3wne6/qgZZ2ihuTskrzkIutYO8c3BzxGXxfOLIJw1tqDG"
 
 headers = {
     "X-Master-Key": MASTER_KEY,
@@ -86,6 +88,7 @@ if st.button("Reveal 🎅"):
         save_data(data)
     else:
         st.error("Error: assignment not found")
+
 
 
 
