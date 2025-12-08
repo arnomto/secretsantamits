@@ -1,4 +1,2 @@
 streamlit
-requests
-json
-random
+requests==2.31.0
