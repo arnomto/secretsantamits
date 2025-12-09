@@ -10,26 +10,6 @@ st.title("🎅 Secret Santa")
 st.write("Pick your name and confirm to reveal your Secret Santa!")
 st.write("**FOR THE LOVE OF GOD JUST DO YOURS <3**")
 
-st.markdown("""
-    <style>
-        body {
-            background-color: #69212c;
-        }
-        .stApp {
-            background-color: #69212c;
-            color: white;
-        }
-        .stSelectbox label, .stButton button, .stSuccess {
-            color: white !important;
-        }
-        .stButton button {
-            background-color: #ffffff10;
-            border: 1px solid white;
-            color: white;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 names = [
 "AARON SAM","ADVAITH SANTHOSH","AISHWARYA SREESH","AKHILESH PRAMOD","ANNE MARIA ELDO",
 "ARCHANA K A","CILEN GEORGE ANIL","GAYATHRI S","HAMDHA FATHIMA SHANAVAS",
@@ -117,3 +97,4 @@ if st.session_state.confirming:
     with c2:
         if st.button("Cancel"):
             st.session_state.confirming = False
+
