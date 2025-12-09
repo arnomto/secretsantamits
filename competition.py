@@ -4,7 +4,25 @@ import requests
 import json
 
 st.set_page_config(page_title="Secret Santa", page_icon="🎅", layout="centered")
-
+st.markdown("""
+    <style>
+        body {
+            background-color: #69212c;
+        }
+        .stApp {
+            background-color: #69212c;
+            color: white;
+        }
+        .stSelectbox label, .stButton button, .stSuccess {
+            color: white !important;
+        }
+        .stButton button {
+            background-color: #ffffff10;
+            border: 1px solid white;
+            color: white;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("🎅 Secret Santa")
 st.write("Pick your name and confirm to reveal your Secret Santa!")
@@ -97,4 +115,5 @@ if st.session_state.confirming:
     with c2:
         if st.button("Cancel"):
             st.session_state.confirming = False
+
 
